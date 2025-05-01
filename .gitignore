@@ -46,7 +46,6 @@ venv.bak/
 *.sublime-project
 
 # Build and Distribution
-*.spec
 *.exe
 *.msi
 *.dmg
