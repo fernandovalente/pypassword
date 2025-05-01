@@ -39,8 +39,7 @@ The project uses the following packages:
 
 1. Clone the repository:
 ```bash
-git clone [repository-url]
-cd password-generator
+git clone https://github.com/fernandovalente/pypassword
 ```
 
 2. Create a virtual environment (recommended):
