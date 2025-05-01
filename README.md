@@ -5,7 +5,7 @@ A secure and user-friendly password generator application built with Python and 
 ## Author
 
 **Fernando Valente**
-- Website: [fernandovalente.com.br](https://fernandovalente.com.br)
+- [fernandovalente.com.br](https://fernandovalente.com.br)
 
 ## Features
 
