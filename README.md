@@ -86,7 +86,7 @@ pip install -r requirements.txt
 pyinstaller password_generator.spec
 ```
 
-3. The executable will be created in the `dist` folder as `Gerador de Senhas.exe`
+3. The executable will be created in the `dist` folder as `Password Generator.exe`
 
 ## Project Architecture
 

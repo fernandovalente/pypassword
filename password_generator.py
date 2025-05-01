@@ -35,31 +35,31 @@ class PasswordGeneratorLogic:
 class PasswordGenerator:
     def __init__(self, root):
         self.root = root
-        self.root.title("Gerador de Senhas")
+        self.root.title("Password Generator")
         self.root.geometry("400x500")
         self.root.configure(bg="#f0f0f0")
         
         self.logic = PasswordGeneratorLogic()
         
-        # Configuração do estilo
+        # Style configuration
         style = ttk.Style()
         style.configure("TCheckbutton", background="#f0f0f0")
         style.configure("TButton", padding=5)
         
-        # Frame principal
+        # Main frame
         main_frame = ttk.Frame(root, padding="20")
         main_frame.pack(fill=tk.BOTH, expand=True)
         
-        # Título
+        # Title
         title_label = ttk.Label(
             main_frame,
-            text="Gerador de Senhas",
+            text="Password Generator",
             font=("Helvetica", 16, "bold")
         )
         title_label.pack(pady=10)
         
-        # Frame para opções
-        options_frame = ttk.LabelFrame(main_frame, text="Opções", padding="10")
+        # Options frame
+        options_frame = ttk.LabelFrame(main_frame, text="Options", padding="10")
         options_frame.pack(fill=tk.X, pady=10)
         
         # Checkboxes
@@ -70,35 +70,35 @@ class PasswordGenerator:
         
         ttk.Checkbutton(
             options_frame,
-            text="Letras Maiúsculas (A-Z)",
+            text="Uppercase Letters (A-Z)",
             variable=self.uppercase_var
         ).pack(anchor=tk.W, pady=2)
         
         ttk.Checkbutton(
             options_frame,
-            text="Letras Minúsculas (a-z)",
+            text="Lowercase Letters (a-z)",
             variable=self.lowercase_var
         ).pack(anchor=tk.W, pady=2)
         
         ttk.Checkbutton(
             options_frame,
-            text="Caracteres Especiais (!@#$%^&*)",
+            text="Special Characters (!@#$%^&*)",
             variable=self.special_var
         ).pack(anchor=tk.W, pady=2)
         
         ttk.Checkbutton(
             options_frame,
-            text="Números (0-9)",
+            text="Numbers (0-9)",
             variable=self.numbers_var
         ).pack(anchor=tk.W, pady=2)
         
-        # Frame para comprimento
+        # Length frame
         length_frame = ttk.Frame(main_frame)
         length_frame.pack(fill=tk.X, pady=10)
         
         ttk.Label(
             length_frame,
-            text="Comprimento da senha:"
+            text="Password Length:"
         ).pack(side=tk.LEFT)
         
         self.length_var = tk.StringVar(value="12")
@@ -109,16 +109,16 @@ class PasswordGenerator:
         )
         length_entry.pack(side=tk.LEFT, padx=5)
         
-        # Botão gerar
+        # Generate button
         generate_button = ttk.Button(
             main_frame,
-            text="Gerar Senha",
+            text="Generate Password",
             command=self.generate_password
         )
         generate_button.pack(pady=10)
         
-        # Frame para exibir senha
-        password_frame = ttk.LabelFrame(main_frame, text="Senha Gerada", padding="10")
+        # Password display frame
+        password_frame = ttk.LabelFrame(main_frame, text="Generated Password", padding="10")
         password_frame.pack(fill=tk.X, pady=10)
         
         self.password_var = tk.StringVar()
@@ -130,10 +130,10 @@ class PasswordGenerator:
         )
         password_entry.pack(fill=tk.X)
         
-        # Botão copiar
+        # Copy button
         copy_button = ttk.Button(
             main_frame,
-            text="Copiar para Área de Transferência",
+            text="Copy to Clipboard",
             command=self.copy_to_clipboard
         )
         copy_button.pack(pady=10)
@@ -150,23 +150,23 @@ class PasswordGenerator:
             
             if password is None:
                 if self.logic.length < 4:
-                    messagebox.showerror("Erro", "A senha deve ter pelo menos 4 caracteres!")
+                    messagebox.showerror("Error", "Password must be at least 4 characters long!")
                 else:
-                    messagebox.showerror("Erro", "Selecione pelo menos uma opção!")
+                    messagebox.showerror("Error", "Please select at least one option!")
                 return
                 
             self.password_var.set(password)
             
         except ValueError:
-            messagebox.showerror("Erro", "Por favor, insira um número válido para o comprimento!")
+            messagebox.showerror("Error", "Please enter a valid number for the length!")
     
     def copy_to_clipboard(self):
         password = self.password_var.get()
         if password:
             pyperclip.copy(password)
-            messagebox.showinfo("Sucesso", "Senha copiada para a área de transferência!")
+            messagebox.showinfo("Success", "Password copied to clipboard!")
         else:
-            messagebox.showwarning("Aviso", "Gere uma senha primeiro!")
+            messagebox.showwarning("Warning", "Generate a password first!")
 
 if __name__ == "__main__":
     root = tk.Tk()
