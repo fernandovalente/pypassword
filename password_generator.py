@@ -39,6 +39,13 @@ class PasswordGenerator:
         self.root.geometry("400x500")
         self.root.configure(bg="#f0f0f0")
         
+        # Create menu bar
+        self.menu_bar = tk.Menu(root)
+        self.root.config(menu=self.menu_bar)
+        
+        # Add About menu item directly to menu bar
+        self.menu_bar.add_command(label="About", command=self.show_about)
+        
         self.logic = PasswordGeneratorLogic()
         
         # Style configuration
@@ -167,6 +174,18 @@ class PasswordGenerator:
             messagebox.showinfo("Success", "Password copied to clipboard!")
         else:
             messagebox.showwarning("Warning", "Generate a password first!")
+
+    def show_about(self):
+        about_text = """Password Generator
+Version 1.0
+
+A secure and user-friendly password generator application.
+
+Author: Fernando Valente
+fernandovalente.com.br
+Source: https://github.com/fernandovalente/pypassword"""
+        
+        messagebox.showinfo("About", about_text)
 
 if __name__ == "__main__":
     root = tk.Tk()
